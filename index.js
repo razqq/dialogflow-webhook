@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const dfff = require('dialogflow-fulfillment');
-const port = process.env.port || 3000
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res)=>{
     var today = new Date();
@@ -53,4 +53,4 @@ app.post('/', express.json(), (req, res)=>{
 
 });
 
-app.listen(port, ()=>console.log("Server is live at port 3333"));
+app.listen(port, ()=>console.log("Server is live at port 3333}"));
