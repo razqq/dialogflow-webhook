@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
 const dfff = require('dialogflow-fulfillment');
-
+const port = process.env.port || 3000
 
 app.get('/', (req, res)=>{
-    res.send("We are live")
+    var today = new Date();
+    var time = today.getHours()
+    res.send(time.toString())
+
 });
 
 app.post('/', express.json(), (req, res)=>{
@@ -14,7 +17,10 @@ app.post('/', express.json(), (req, res)=>{
     });
 
     function demo(agent){
-        agent.add("Sending response from Webhook server as v1.1.11.1");
+        var today = new Date();
+        var time = today.getHours()
+        agent.add(time.toString())
+        //agent.add("Sending response from Webhook server as v1.1.11.1");
     }
     function customPayloadDemo(agent){
         var payloadData = {
@@ -47,4 +53,4 @@ app.post('/', express.json(), (req, res)=>{
 
 });
 
-app.listen(3333, ()=>console.log("Server is live at port 3333"));
+app.listen(port, ()=>console.log("Server is live at port 3333"));
