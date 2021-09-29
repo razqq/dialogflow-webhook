@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000
 app.get('/', (req, res)=>{
     var today = new Date();
     var time = today.getHours()
-    res.send(time.toString())
+    res.send('Este ora ' + ((parseInt(time.toString()) + 3) % 24).toString())
 
 });
 
@@ -19,7 +19,7 @@ app.post('/', express.json(), (req, res)=>{
     function demo(agent){
         var today = new Date();
         var time = today.getHours()
-        agent.add(time.toString())
+        agent.add('Este ora ' + ((parseInt(time.toString()) + 3) % 24).toString())
         //agent.add("Sending response from Webhook server as v1.1.11.1");
     }
     function customPayloadDemo(agent){
@@ -53,4 +53,4 @@ app.post('/', express.json(), (req, res)=>{
 
 });
 
-app.listen(port, ()=>console.log("Server is live at port 3333}"));
+app.listen(port, ()=>console.log("Server is live at port ", port));
